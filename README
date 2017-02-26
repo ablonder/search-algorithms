@@ -7,10 +7,10 @@ Path length: 10
 Path cost: 4.5912999999999995
 
 A*:
-Runtime: 0.001283175999999997 seconds
-Number of nodes explored: 61
-Path length: 11
-Path cost: 4.9811000000000005
+Runtime: 0.0015333670000000077 seconds
+Number of nodes explored: 52
+Path length: 10
+Path cost: 4.6482
 
 
 Network 2:

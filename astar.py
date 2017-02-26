@@ -9,6 +9,7 @@ March 1st, 2017
 import time
 from heapq import *
 import searchtree
+import math
 
 class AStar():
     """
@@ -28,10 +29,11 @@ class AStar():
         # start the timer
         stime = time.process_time()
         # create a search tree to hold all explored nodes, starting with the start state
+        # the heuristic I'll be using is Euclidian distance
         root = searchtree.Stree(self.model.startState(), 0, heuristic=self.disttogoal(self.model.startState()))
         # create a list to hold the fronteir set, which will be a priority heap
         frontier = []
-        # add the start state and the estimated distance to the nearest goal (my heuristic) to the frontier set
+        # add the start state to the frontier set
         heappush(frontier, root)
         # list of state that have been explored during the search
         explored = []
@@ -49,7 +51,7 @@ class AStar():
                     # add it to the list of states that have been explored so far
                     explored.append(result)
                     # expand that child
-                    c = n.expand(result, self.model.cost(n.state, act), heuristic=self.disttogoal(result) + abs(n.state[0]-result[0]) + abs(n.state[1]-result[0]))
+                    c = n.expand(result, self.model.cost(n.state, act), self.disttogoal(result) + math.sqrt((n.state[0]-result[0])**2 + (n.state[1]-result[1])**2))
                     # if act is a goal state, print out the amount of time it took, number of nodes explored, the length of the path to the goal, and its cost
                     if self.model.goal(result):
                         # stop the timer
@@ -74,8 +76,8 @@ class AStar():
         bestdist = None
         # loop through all the possible goal states
         for goal in self.model.goalStates():
-            # calculate Manhattan distance (because it's largest)
-            dist = abs(state[0]-goal[0]) + abs(state[1]-goal[1])
+            # calculate Euclidian distance (because it's guarenteed to be smaller)
+            dist = math.sqrt((state[0]-goal[0])**2 + (state[1]-goal[1])**2)
             # if no nearest goal has been found yet, or this is closer
             if not bestdist or dist < bestdist:
                 # make this the best
