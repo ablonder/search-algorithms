@@ -8,7 +8,7 @@ March 1st, 2017
 
 import time
 import searchtree
-from asyncio import Queue
+from queue import Queue
 
 class BFS():
     """
@@ -33,32 +33,35 @@ class BFS():
         frontier = Queue()
         # add the start state to the fronteir set
         frontier.put_nowait(root)
-        # counter of how many nodes have been explored during the search
-        explored = 0
-        print(frontier)
-
-        # expand the next node in the fronteir state until it is empty (or a goal has been reached)
+        # list of state that have been explored during the search
+        explored = []
+        
+        # expand the next node in the fronteir set until it is empty (or a goal has been reached)
         while not frontier.empty():
             # pop the next state from the frontier set
             n = frontier.get_nowait()
-            # increment the amount of nodes that have been explored so far
-            explored += 1
+            # add this state to the list of states that have been explored so far
+            explored.append(n.state)
             # loop through the possible actions that can be taken from that state and expand them
             for act in self.model.actions(n.state):
-                # expand that child
-                c = n.expand(act, self.model.cost(n.state, act))
-                # if act is a goal state, print out the amount of time it took, number of nodes explored, the length of the path to the goal, and its cost and then return to quit
-                if self.model.goal(act):
-                    # stop the timer
-                    etime = time.process_time()
-                    print("SUCCESS!")
-                    print("Runtime: " + str(etime-stime) + " seconds")
-                    print("Number of nodes explored: " + str(explored))
-                    print("Path length: " + str(c.path))
-                    print("Path cost: " + str(c.cost))
-                    return
-                # otherwise, if the c is not None (has not already been explored), add it to the frontier set and keep going
-                if c is not None:
+                # save the result
+                result = self.model.result(n.state, act)
+                # if the action has not been explored yet
+                if result not in explored:
+                    # expand that child
+                    c = n.expand(result, self.model.cost(n.state, act))
+                    # if act is a goal state, print out the amount of time it took, number of nodes explored, the length of the path to the goal, and its cost
+                    if self.model.goal(result):
+                        # stop the timer
+                        etime = time.process_time()
+                        print("SUCCESS!")
+                        print("Runtime: " + str(etime-stime) + " seconds")
+                        print("Number of nodes explored: " + str(len(explored)))
+                        print("Path length: " + str(c.path))
+                        print("Path cost: " + str(c.cost))
+                        #  and then return to quit
+                        return
+                    # otherwise, add it to the frontier set and keep going
                     frontier.put_nowait(c)
 
         # if it gets to this point, the frontier is empty and no goal has been found, indicating that there is no way to get from the start state to the goal
