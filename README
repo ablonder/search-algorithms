@@ -1,0 +1,43 @@
+Network 1:
+
+BFS:
+Runtime: 0.039276897000000005 seconds
+Number of nodes explored: 380
+Path length: 10
+Path cost: 4.5912999999999995
+
+A*:
+Runtime: 0.001283175999999997 seconds
+Number of nodes explored: 61
+Path length: 11
+Path cost: 4.9811000000000005
+
+
+Network 2:
+
+BFS:
+Runtime: 4.542445691 seconds
+Number of nodes explored: 4105
+Path length: 27
+Path cost: 4.499999999999999
+
+A*:
+Runtime: 0.03982999599999992 seconds
+Number of nodes explored: 485
+Path length: 28
+Path cost: 4.5198
+
+
+Network 3:
+
+BFS:
+Runtime: 1590.1788454569999 seconds
+Number of nodes explored: 39525
+Path length: 80
+Path cost: 6.432099999999999
+
+A*
+Runtime: 0.9692753550000361 seconds
+Number of nodes explored: 1797
+Path length: 162
+Path cost: 11.683400000000002
