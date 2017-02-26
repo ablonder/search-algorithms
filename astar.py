@@ -2,8 +2,8 @@
 The AStar class represents an object capable of using A* Search to find a
 path to goal state from a start state in a given Problem
 
-<Name>
-<Date>
+Aviva Blonder
+March 1st, 2017
 """
 
 import time

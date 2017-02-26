@@ -40,14 +40,14 @@ class BFS():
         while not frontier.empty():
             # pop the next state from the frontier set
             n = frontier.get_nowait()
-            # add this state to the list of states that have been explored so far
-            explored.append(n.state)
             # loop through the possible actions that can be taken from that state and expand them
             for act in self.model.actions(n.state):
                 # save the result
                 result = self.model.result(n.state, act)
                 # if the action has not been explored yet
                 if result not in explored:
+                    # add it to the list of states that have been explored so far
+                    explored.append(result)
                     # expand that child
                     c = n.expand(result, self.model.cost(n.state, act))
                     # if act is a goal state, print out the amount of time it took, number of nodes explored, the length of the path to the goal, and its cost
