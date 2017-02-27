@@ -34,7 +34,7 @@ class IDS():
                  print("SUCCESS!")
                  print("Runtime: " + str(etime-stime) + " seconds")
                  print("Number of nodes explored: " + str(len(self.explored)))
-                 print("Path length: " + str(result.path))
+                 print("Path length: " + str(depth))
                  print("Path cost: " + str(result.cost))
                  #  and then return to quit
                  return

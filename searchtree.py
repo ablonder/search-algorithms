@@ -22,7 +22,7 @@ class Stree():
         """ Creates a child node for a given action from this state and returns it. """
 
         # create a new leaf with the designated action, cost, and heuristic
-        new = Stree(action, self.cost+cost, self.path+1, heuristic)
+        new = Stree(action, self.cost+cost, self.path+1, self.cost+heuristic)
         # add the leaf to the list of children
         self.children.append(new)
         # return the new child

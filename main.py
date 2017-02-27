@@ -33,8 +33,8 @@ def main():
     #bfsSearcher.search()
 
     # search using IDS
-    idsSearcher = ids.IDS(model)
-    idsSearcher.search()
+    #idsSearcher = ids.IDS(model)
+    #idsSearcher.search()
 
     # search using A*
     astarSearcher = astar.AStar(model)
