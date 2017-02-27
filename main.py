@@ -7,6 +7,7 @@ Adam Eck
 
 import astar
 import bfs
+import ids
 import network
 import problem
 import sys
@@ -28,8 +29,12 @@ def main():
     model = problem.Problem(net)
 
     # search using BFS
-    bfsSearcher = bfs.BFS(model)
-    bfsSearcher.search()
+    #bfsSearcher = bfs.BFS(model)
+    #bfsSearcher.search()
+
+    # search using IDS
+    idsSearcher = ids.IDS(model)
+    idsSearcher.search()
 
     # search using A*
     astarSearcher = astar.AStar(model)
