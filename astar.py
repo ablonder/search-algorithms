@@ -51,7 +51,7 @@ class AStar():
                     # add it to the list of states that have been explored so far
                     explored.append(result)
                     # expand that child
-                    c = n.expand(result, self.model.cost(n.state, act), self.disttogoal(result) + math.sqrt((n.state[0]-result[0])**2 + (n.state[1]-result[1])**2))
+                    c = n.expand(result, self.model.cost(n.state, act), heuristic = self.disttogoal(result) + math.sqrt((n.state[0]-result[0])**2 + (n.state[1]-result[1])**2))
                     # if act is a goal state, print out the amount of time it took, number of nodes explored, the length of the path to the goal, and its cost
                     if self.model.goal(result):
                         # stop the timer
@@ -68,6 +68,7 @@ class AStar():
 
         # if it gets to this point, the frontier is empty and no goal has been found, indicating that there is no way to get from the start state to the goal
         print("Goal not found!")
+
 
     def disttogoal(self, state):
         """ Calculates the distance between a given state and the nearest goal """

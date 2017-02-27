@@ -17,6 +17,7 @@ class Stree():
         # heuristic value for comparison in the priority heap in A*
         self.heuristic = heuristic
 
+
     def expand(self, action, cost, heuristic = 0):
         """ Creates a child node for a given action from this state and returns it. """
 
@@ -26,6 +27,7 @@ class Stree():
         self.children.append(new)
         # return the new child
         return new
+
 
     def __lt__(self, other):
         """ Enables two trees to be compared for sorting in the priority heap for A* """
