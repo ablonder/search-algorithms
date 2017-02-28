@@ -53,3 +53,19 @@ Runtime: 49.00801430999999 seconds
 Number of nodes explored: 8689
 Path length: 89
 Path cost: 5.915000000000001
+
+IDS:
+Exceeded maximum recursive depth.
+
+
+
+Based on the results above, A* was clearly the best of the three algorithms I implemented. I decided to use Euclidian distance as my heuristic because the path costs were based on distance between nodes, so the cost to get from a given node to a goal state had to be at least the distance between the node and the nearest goal. That means I used an admissable heuristic, so the algorithm should always find the optimal path. The results of running the three algorithms on the networks provided indicate that this is in fact the case. On all three networks, A* found the path with the lowest cost and furthermore did it faster and by exploring fewer nodes than BFS or IDS. There may be something wrong with my Iterative Deepening Search implementation based on how long it took on all three networks and how bad the paths it found were.
+
+
+Implementing the search algorithms was surprisingly easy, the code is pretty short and not terribly complicated. Debugging was a little frustrating. Initially I tried keeping a recursive explored set for each path, which caused BFS to take so long and use so much space that my computer froze whenever I ran it. It took me some time to realize that was the problem, so I was worried about infinite loops for a little while. I also had a little bit of trouble with A*, which was returning worse paths than BFS because I forgot to add the cost of the path so far to the heuristic. As you can see by the fact that IDS exceeded maximum recursive depth on network 3, I don't think I've entirely sorted that one out.
+
+
+I spent approximately 4-5 hours on this assignment.
+
+
+I affirm that I have adhered to the Honor Code on this assignment.
