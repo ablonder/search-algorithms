@@ -23,8 +23,8 @@ class IDS():
 
          # increase depth until a solution is found or it runs out of nodes
          for depth in range(1, len(self.model.net.nodes)):
-             # initialize list of states that have been explored during the search
-             self.explored = []
+             # initialize list of states that have been explored during the search and the depths at which they have been found
+             self.explored = {}
              # start the recursive search on the start state and grab the result
              result = self.rsearch(root, depth)
              # if the result isn't none, it's a success!
@@ -47,7 +47,7 @@ class IDS():
         """ Recursive search method that will do the heavy lifting in the search algorithm """
 
         # add the current node to the explored set
-        self.explored.append(node.state)
+        self.explored[node.state] = node.path
         # if the current node is a goal state, just stop there
         if self.model.goal(node.state):
             return node
@@ -58,8 +58,8 @@ class IDS():
         for act in self.model.actions(node.state):
             # save the result
             result = self.model.result(node.state, act)
-            # if the action has not been explored yet, recurse on it
-            if result not in self.explored:
+            # if the action has not been explored yet or is higher up, recurse on it
+            if result not in self.explored or self.explored[result] > node.path + 1:
                 outcome = self.rsearch(node.expand(result, self.model.cost(node.state, act)), depth-1)
                 # if the outcome isn't None, return it
                 if outcome:
