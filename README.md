@@ -5,7 +5,7 @@ I implemented and evaluated 4 search algorithms: Breadth First Search, A*, Itera
 <table>
   <tr><td rowspan=2></td><th colspan=4>Network 1</th><th colspan=4>Network 2</th><th colspan=3>Network 3</th></tr>
   <tr><th>BFS</th><th>A*</th><th>IDS</th><th>Modified IDS</th><th>BFS</th><th>A*</th><th>IDS</th><th>Modified IDS</th><th>BFS</th><th>A*</th><th>IDS</th></tr>
-  <tr><th>Runtime (seconds)</th><td>0.0393</td><td>0.0043</td><td>0.1553</td><td>0.0859</td><td>4.5424</td><td>0.0949</td><td>23.2790</td>><td>7.6172</td><td>1590.1788</td><td>49.0080</td><td rowspan=4>Exceeds maximum recursive depth.</td></tr>
+  <tr><th>Runtime (seconds)</th><td>0.0393</td><td>0.0043</td><td>0.1553</td><td>0.0859</td><td>4.5424</td><td>0.0949</td><td>23.2790</td><td>7.6172</td><td>1590.1788</td><td>49.0080</td><td rowspan=4>Exceeds maximum recursive depth.</td></tr>
   <tr><th># nodes explored</th><td>380</td><td>51</td><td>284</td><td>341</td><td>4105</td><td>448</td><td>1556</td><td>4105</td><td>39525</td><td>8689</td></tr>
   <tr><th>Path length</th><td>10</td><td>10</td><td>35</td><td>10</td><td>27</td><td>28</td><td>140</td><td>27</td><td>80</td><td>89</td></tr>
   <tr><th>Path cost</th><td>4.5913</td><td>4.4484</td><td>9.4628</td><td>4.5913</td><td>4.5000</td><td>4.2137</td><td>14.1892</td><td>4.500</td><td>6.4321</td><td>5.9150</td></tr>
